@@ -435,16 +435,18 @@
 
   // Konfigurasi Lingkungan Firebase Project Anda
   const firebaseConfig = {
-    apiKey: "AIzaSyCdvglb_bTS4P_39O9DMBhKGGKEREHjuDU",
-  authDomain: "ecrew-twa.firebaseapp.com",
-  databaseURL: "https://ecrew-twa-default-rtdb.firebaseio.com",
-  projectId: "ecrew-twa",
-  storageBucket: "ecrew-twa.firebasestorage.app",
-  messagingSenderId: "794153438466",
-  appId: "1:794153438466:web:85eef29be90c03b966461b",
-  measurementId: "G-88YNDCGM99"
+    apiKey: "AIzaSyBiiTUcULMRCM_4FyAX8nSx1Rj1xCdJGSw",
+  authDomain: "ecrew-absensi-183ac.firebaseapp.com",
+  projectId: "ecrew-absensi-183ac",
+  storageBucket: "ecrew-absensi-183ac.firebasestorage.app",
+  messagingSenderId: "1080047836290",
+  appId: "1:1080047836290:web:6131443650a3b856e1289b",
+  measurementId: "G-ZWFLE3Q74K"
   };
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
