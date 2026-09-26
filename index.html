@@ -1022,7 +1022,7 @@
     const pass = document.getElementById('login-pass').value.trim();
     const errorEl = document.getElementById('login-error');
 
-    const validMasterAdmin = user === 'admin' && pass === 'ramdan28';
+    const validMasterAdmin = user === 'admin' && pass === 'maintenancetwa';
     const dbUser = allUsers.find(u => u.email.toLowerCase() === user && u.password === pass);
 
     if (!validMasterAdmin && !dbUser) {
