@@ -1,31 +1,28 @@
 <!doctype html>
 <html class="h-full">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#0a0e27">
   <title>Ecrew - Maintenance</title>
-  
   <link rel="icon" href="https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ" type="image/png">
   <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ">
   <link id="pwa-manifest" rel="manifest">
-
+  
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  
   <script src="/_sdk/element_sdk.js"></script>
-  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Lora:wght@400;600&display=swap" rel="stylesheet">
   
   <style>
     * { font-family: 'Poppins', sans-serif; }
     body { background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%); box-sizing: border-box; }
     
-    .menu-card { 
+    .menu-card {
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       border: 1px solid rgba(255,255,255,0.05);
     }
-    .menu-card:hover { 
+    .menu-card:hover {
       transform: translateY(-5px) scale(1.02);
       box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15), 0 0 25px rgba(6, 182, 212, 0.1);
       border: 1px solid rgba(6, 182, 212, 0.3);
@@ -41,7 +38,7 @@
     .submenu-panel { animation: expandDown 0.3s ease forwards; }
     @keyframes expandDown { from { opacity:0; max-height:0; } to { opacity:1; max-height:800px; } }
     
-    .glow-border { 
+    .glow-border {
       background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
       border: 1px solid rgba(6, 182, 212, 0.3);
     }
@@ -85,12 +82,14 @@
         border-radius: 10px;
     }
   </style>
- </head>
- <body class="h-full">
+</head>
+<body class="h-full">
 
   <!-- Loading Awal (Cek Sesi Login) -->
   <div id="loading-screen" class="h-full w-full flex flex-col items-center justify-center p-4">
-    <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl shadow-cyan-500/20 mb-4 animate-pulse"><img src="https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ" alt="Ecrew Logo" class="w-full h-full object-contain rounded-2xl"></div>
+    <div class="w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl shadow-cyan-500/20 mb-4 animate-pulse">
+        <img src="https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ" alt="Ecrew Logo" class="w-full h-full object-contain rounded-2xl">
+    </div>
     <p class="text-cyan-400 font-semibold animate-pulse" id="loading-text">Memuat Sistem...</p>
   </div>
 
@@ -100,7 +99,8 @@
     <div class="glow-border rounded-3xl p-8 relative">
      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 to-slate-900/60 rounded-3xl -z-10"></div>
      <div class="flex items-center justify-center gap-4 mb-8">
-      <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl shadow-cyan-500/20"><img src="https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ" alt="Ecrew Logo" class="w-full h-full object-contain rounded-2xl">
+      <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl shadow-cyan-500/20">
+          <img src="https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ" alt="Ecrew Logo" class="w-full h-full object-contain rounded-2xl">
       </div>
       <h1 class="text-white font-bold text-3xl text-gradient">Ecrew</h1>
      </div>
@@ -110,11 +110,16 @@
        <h2 class="text-white text-center font-semibold text-xl mb-2">Maintenance</h2>
        <p class="text-slate-400 text-center text-sm mb-8">Access your flight operations portal</p>
        <form id="login-form" class="space-y-4">
-        <div><label class="text-slate-300 text-sm font-semibold block mb-2">Email / Username</label> <input id="login-user" type="text" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/60 transition" placeholder="email@ecrew.com atau admin">
+        <div>
+            <label class="text-slate-300 text-sm font-semibold block mb-2">Email / Username</label> 
+            <input id="login-user" type="text" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/60 transition" placeholder="email@ecrew.com atau admin">
         </div>
-        <div><label class="text-slate-300 text-sm font-semibold block mb-2">Password</label> <input id="login-pass" type="password" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/60 transition" placeholder="Enter password">
+        <div>
+            <label class="text-slate-300 text-sm font-semibold block mb-2">Password</label> 
+            <input id="login-pass" type="password" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/60 transition" placeholder="Enter password">
         </div>
-        <div id="login-error" class="hidden bg-red-500/10 border border-red-500/30 text-red-300 text-sm p-3 rounded-lg"></div><button type="submit" class="w-full premium-gradient text-white font-bold py-3 rounded-xl transition smooth-button shadow-xl shadow-cyan-500/20">Login</button>
+        <div id="login-error" class="hidden bg-red-500/10 border border-red-500/30 text-red-300 text-sm p-3 rounded-lg"></div>
+        <button type="submit" class="w-full premium-gradient text-white font-bold py-3 rounded-xl transition smooth-button shadow-xl shadow-cyan-500/20">Login</button>
        </form>
        <div class="mt-6 text-center">
           <p class="text-slate-400 text-sm">Don't have an account? <button id="btn-go-register" class="text-cyan-400 font-semibold hover:text-cyan-300 transition">Register Here</button></p>
@@ -126,12 +131,22 @@
         <h2 class="text-white text-center font-bold text-xl mb-2">Welcome To ECrew-Maintenance</h2>
         <p class="text-slate-400 text-center text-sm mb-6">Create your crew account</p>
         <form id="register-form" class="space-y-4">
-            <div><label class="text-slate-300 text-xs font-semibold block mb-1">Full Name</label><input id="r-name" type="text" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition" placeholder="Budi Santoso"></div>
-            <div><label class="text-slate-300 text-xs font-semibold block mb-1">Email / Username</label><input id="r-email" type="text" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition" placeholder="budi@ecrew.com"></div>
-            <div><label class="text-slate-300 text-xs font-semibold block mb-1">Password</label><input id="r-pass" type="password" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition" placeholder="Create password"></div>
+            <div>
+                <label class="text-slate-300 text-xs font-semibold block mb-1">Full Name</label>
+                <input id="r-name" type="text" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition" placeholder="Budi Santoso">
+            </div>
+            <div>
+                <label class="text-slate-300 text-xs font-semibold block mb-1">Email / Username</label>
+                <input id="r-email" type="text" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition" placeholder="budi@ecrew.com">
+            </div>
+            <div>
+                <label class="text-slate-300 text-xs font-semibold block mb-1">Password</label>
+                <input id="r-pass" type="password" required class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition" placeholder="Create password">
+            </div>
             
             <div class="flex gap-2">
-                <div class="w-1/2"><label class="text-slate-300 text-[11px] font-semibold block mb-1">Rank</label>
+                <div class="w-1/2">
+                    <label class="text-slate-300 text-[11px] font-semibold block mb-1">Rank</label>
                     <select id="r-rank" class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
                         <option value="Captain">Captain</option>
                         <option value="First Officer">First Officer</option>
@@ -142,7 +157,8 @@
                         <option value="-">None</option>
                     </select>
                 </div>
-                <div class="w-1/2"><label class="text-slate-300 text-[11px] font-semibold block mb-1">Rule</label>
+                <div class="w-1/2">
+                    <label class="text-slate-300 text-[11px] font-semibold block mb-1">Rule</label>
                     <select id="r-rule" class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
                         <option value="Key Person">Key Person</option>
                         <option value="Member">Member</option>
@@ -150,7 +166,8 @@
                 </div>
             </div>
             
-            <div><label class="text-slate-300 text-xs font-semibold block mb-1">Position</label>
+            <div>
+                <label class="text-slate-300 text-xs font-semibold block mb-1">Position</label>
                 <select id="r-pos" class="w-full bg-slate-800/40 border border-slate-700/50 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
                     <!-- Options populated by JS -->
                 </select>
@@ -170,25 +187,32 @@
     </div>
    </div>
   </div>
-  
+
   <div id="app" class="hidden h-full w-full overflow-auto">
    <header class="bg-slate-900/60 backdrop-blur-xl border-b border-slate-700/40 px-4 sm:px-6 py-4 sticky top-0 z-30">
     <div class="max-w-7xl mx-auto flex items-center justify-between w-full">
      <div class="flex items-center gap-3 sm:gap-4 flex-1">
       <button id="btn-back" class="hidden text-slate-300 hover:text-white transition hover:scale-110 p-1"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-      <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/20 shrink-0"><img src="https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ" alt="Ecrew Logo" class="w-full h-full object-contain rounded-xl sm:rounded-2xl">
+      <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/20 shrink-0">
+          <img src="https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ" alt="Ecrew Logo" class="w-full h-full object-contain rounded-xl sm:rounded-2xl">
       </div>
       <div class="truncate pr-2">
        <h1 id="dash-title" class="text-white font-bold text-base sm:text-lg tracking-tight truncate">Ecrew - Maintenance</h1>
-       <p id="dash-welcome" class="text-slate-400 text-[10px] sm:text-xs font-medium truncate">Welcome back, Captain!</p>
+       <p id="dash-welcome" class="text-slate-400 text-[10px] sm:text-xs font-medium truncate">Welcome back, Sir!</p>
       </div>
      </div>
      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
          <div id="admin-controls" class="hidden flex items-center gap-2 sm:gap-3">
-          <button id="btn-users" class="flex items-center gap-1 sm:gap-2 bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500/30 font-semibold px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition border border-indigo-500/30 smooth-button"> <i data-lucide="users" class="w-4 h-4"></i> <span class="hidden md:inline">Manage Users</span> </button>
-          <button id="btn-add" class="flex items-center gap-1 sm:gap-2 premium-gradient text-white font-semibold px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl transition smooth-button shadow-lg shadow-cyan-500/20"> <i data-lucide="plus" class="w-4 h-4"></i> <span class="hidden md:inline">Add Menu</span> </button>
+          <button id="btn-users" class="flex items-center gap-1 sm:gap-2 bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500/30 font-semibold px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition border border-indigo-500/30 smooth-button"> 
+              <i data-lucide="users" class="w-4 h-4"></i> <span class="hidden md:inline">Manage Users</span> 
+          </button>
+          <button id="btn-add" class="flex items-center gap-1 sm:gap-2 premium-gradient text-white font-semibold px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl transition smooth-button shadow-lg shadow-cyan-500/20"> 
+              <i data-lucide="plus" class="w-4 h-4"></i> <span class="hidden md:inline">Add Menu</span> 
+          </button>
          </div>
-         <button id="btn-logout" class="flex items-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 font-medium px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition border border-slate-700/30 smooth-button" title="Logout"> <i data-lucide="log-out" class="w-4 h-4"></i> <span class="hidden md:inline">Logout</span> </button>
+         <button id="btn-logout" class="flex items-center gap-2 bg-slate-800/50 hover:bg-slate-700/50 text-slate-300 font-medium px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition border border-slate-700/30 smooth-button" title="Logout"> 
+             <i data-lucide="log-out" class="w-4 h-4"></i> <span class="hidden md:inline">Logout</span> 
+         </button>
      </div>
     </div>
    </header>
@@ -198,7 +222,8 @@
     <div id="menu-grid" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
     </div>
     <div id="empty-state" class="hidden text-center py-20 fade-in">
-     <div class="w-24 h-24 mx-auto rounded-3xl glow-border flex items-center justify-center mb-6"><i data-lucide="layout-grid" class="w-12 h-12 text-slate-600"></i>
+     <div class="w-24 h-24 mx-auto rounded-3xl glow-border flex items-center justify-center mb-6">
+         <i data-lucide="layout-grid" class="w-12 h-12 text-slate-600"></i>
      </div>
      <p class="text-slate-400 text-lg font-semibold">No menus yet</p>
      <p class="text-slate-500 text-sm mt-2">Click "Add Menu" to get started</p>
@@ -225,21 +250,34 @@
    <div id="modal" class="hidden fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4">
     <div class="bg-slate-900 rounded-3xl w-full max-w-md glow-border slide-up flex flex-col max-h-[95vh]">
      <div class="p-5 sm:p-6 border-b border-slate-700/40 flex items-center justify-between shrink-0">
-      <h2 id="modal-title" class="text-white font-bold text-xl">Add Menu</h2><button id="modal-close" class="text-slate-400 hover:text-white transition hover:scale-110"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h2 id="modal-title" class="text-white font-bold text-xl">Add Menu</h2>
+      <button id="modal-close" class="text-slate-400 hover:text-white transition hover:scale-110"><i data-lucide="x" class="w-5 h-5"></i></button>
      </div>
      <form id="menu-form" class="p-5 sm:p-6 space-y-4 overflow-y-auto custom-scrollbar">
-      <div><label class="text-slate-300 text-sm font-semibold block mb-1">Menu Name</label> <input id="f-name" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="e.g. Flight Schedule">
+      <div>
+          <label class="text-slate-300 text-sm font-semibold block mb-1">Menu Name</label> 
+          <input id="f-name" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="e.g. Flight Schedule">
       </div>
-      <div><label class="text-slate-300 text-sm font-semibold block mb-1">Image URL</label>
+      <div>
+          <label class="text-slate-300 text-sm font-semibold block mb-1">Image URL</label>
        <div id="img-preview-wrap" class="hidden mb-2">
         <img id="img-preview" class="w-full h-24 sm:h-32 object-contain rounded-xl">
-       </div><input id="f-image" type="text" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="https://drive.google.com/file/d/.../view">
+       </div>
+       <input id="f-image" type="text" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="https://drive.google.com/file/d/.../view">
       </div>
-      <div><label class="text-slate-300 text-sm font-semibold block mb-1">Link URL</label> <input id="f-url" type="url" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="https://example.com">
+      <div>
+          <label class="text-slate-300 text-sm font-semibold block mb-1">Link URL</label> 
+          <input id="f-url" type="url" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="https://example.com">
       </div>
-      <div><label class="text-slate-300 text-sm font-semibold block mb-1">Parent Menu (optional)</label> <select id="f-parent" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition"> <option value="">— None (Main Menu) —</option> </select>
+      <div>
+          <label class="text-slate-300 text-sm font-semibold block mb-1">Parent Menu (optional)</label> 
+          <select id="f-parent" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition"> 
+              <option value="">— None (Main Menu) —</option> 
+          </select>
       </div>
-      <div><label class="text-slate-300 text-sm font-semibold block mb-1">Urutan Tampil (Angka)</label> <input id="f-order" type="number" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="Contoh: 1, 2, 3...">
+      <div>
+          <label class="text-slate-300 text-sm font-semibold block mb-1">Urutan Tampil (Angka)</label> 
+          <input id="f-order" type="number" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="Contoh: 1, 2, 3...">
       </div>
       
       <!-- Visibilitas Menu -->
@@ -256,13 +294,22 @@
         <label class="text-slate-300 text-sm font-semibold block mb-1 flex items-center justify-between mt-4">
             <span>Pilih Posisi (Bisa Akses)</span>
             <button type="button" id="btn-check-all" class="text-[10px] text-cyan-400 hover:text-cyan-300 px-2 py-0.5 border border-cyan-500/30 rounded transition">Pilih / Hapus Semua</button>
-        </label> 
-        <div class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl p-3 max-h-40 overflow-y-auto custom-scrollbar flex flex-col gap-2" id="access-checkbox-container">
+        </label>
+         <div class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl p-3 max-h-40 overflow-y-auto custom-scrollbar flex flex-col gap-2" id="access-checkbox-container">
             <!-- Checkbox akan digenerate oleh JS -->
         </div>
       </div>
 
-      <div class="flex gap-2 pt-2 shrink-0"><button type="submit" id="btn-submit" class="flex-1 premium-gradient text-white font-semibold py-3 rounded-xl transition smooth-button shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 text-sm sm:text-base"> <i data-lucide="check" class="w-4 h-4"></i> Save </button> <button type="button" id="btn-duplicate" class="hidden bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 font-semibold py-3 px-4 rounded-xl transition border border-blue-500/30 smooth-button" title="Duplicate this menu"> <i data-lucide="copy" class="w-4 h-4"></i> </button> <button type="button" id="btn-delete" class="hidden bg-red-500/20 text-red-300 hover:bg-red-500/30 font-semibold py-3 px-4 rounded-xl transition border border-red-500/30 smooth-button" title="Delete menu"> <i data-lucide="trash-2" class="w-4 h-4"></i> </button>
+      <div class="flex gap-2 pt-2 shrink-0">
+          <button type="submit" id="btn-submit" class="flex-1 premium-gradient text-white font-semibold py-3 rounded-xl transition smooth-button shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 text-sm sm:text-base"> 
+              <i data-lucide="check" class="w-4 h-4"></i> Save 
+          </button> 
+          <button type="button" id="btn-duplicate" class="hidden bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 font-semibold py-3 px-4 rounded-xl transition border border-blue-500/30 smooth-button" title="Duplicate this menu"> 
+              <i data-lucide="copy" class="w-4 h-4"></i> 
+          </button> 
+          <button type="button" id="btn-delete" class="hidden bg-red-500/20 text-red-300 hover:bg-red-500/30 font-semibold py-3 px-4 rounded-xl transition border border-red-500/30 smooth-button" title="Delete menu"> 
+              <i data-lucide="trash-2" class="w-4 h-4"></i> 
+          </button>
       </div>
       <div id="form-msg" class="hidden text-center text-sm py-2 px-3 rounded-lg shrink-0"></div>
      </form>
@@ -273,7 +320,8 @@
    <div id="users-modal" class="hidden fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4">
     <div class="bg-slate-900 rounded-3xl w-full max-w-4xl glow-border slide-up flex flex-col max-h-[95vh]">
      <div class="p-5 sm:p-6 border-b border-slate-700/40 flex items-center justify-between shrink-0">
-      <h2 class="text-white font-bold text-xl">Manage Users</h2><button id="users-modal-close" class="text-slate-400 hover:text-white transition hover:scale-110"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h2 class="text-white font-bold text-xl">Manage Users</h2>
+      <button id="users-modal-close" class="text-slate-400 hover:text-white transition hover:scale-110"><i data-lucide="x" class="w-5 h-5"></i></button>
      </div>
      <div class="flex-1 overflow-y-auto custom-scrollbar p-5 sm:p-6 flex flex-col md:flex-row gap-6 md:gap-8">
       
@@ -281,12 +329,22 @@
       <div class="w-full md:w-[45%] shrink-0">
        <h3 class="text-white font-semibold mb-4 text-lg">Add New User</h3>
        <form id="user-form" class="space-y-3">
-        <div><label class="text-slate-300 text-xs font-semibold block mb-1">Full Name</label><input id="u-name" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="Budi Santoso"></div>
-        <div><label class="text-slate-300 text-xs font-semibold block mb-1">Email / Username</label><input id="u-email" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="budi@ecrew.com"></div>
-        <div><label class="text-slate-300 text-xs font-semibold block mb-1">Password</label><input id="u-pass" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="P@ssw0rd123"></div>
+        <div>
+            <label class="text-slate-300 text-xs font-semibold block mb-1">Full Name</label>
+            <input id="u-name" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="Budi Santoso">
+        </div>
+        <div>
+            <label class="text-slate-300 text-xs font-semibold block mb-1">Email / Username</label>
+            <input id="u-email" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="budi@ecrew.com">
+        </div>
+        <div>
+            <label class="text-slate-300 text-xs font-semibold block mb-1">Password</label>
+            <input id="u-pass" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition" placeholder="P@ssw0rd123">
+        </div>
         
         <div class="flex gap-3">
-          <div class="w-1/2"><label class="text-slate-300 text-xs font-semibold block mb-1">Rank</label>
+          <div class="w-1/2">
+           <label class="text-slate-300 text-xs font-semibold block mb-1">Rank</label>
            <select id="u-rank" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition text-sm">
             <option value="Captain">Captain</option>
             <option value="First Officer">First Officer</option>
@@ -297,7 +355,8 @@
             <option value="-">None</option>
            </select>
           </div>
-          <div class="w-1/2"><label class="text-slate-300 text-xs font-semibold block mb-1">Role (Admin/User)</label>
+          <div class="w-1/2">
+           <label class="text-slate-300 text-xs font-semibold block mb-1">Role (Admin/User)</label>
            <select id="u-role" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 focus:bg-slate-800/70 transition text-sm">
             <option value="user">User</option>
             <option value="admin">Admin</option>
@@ -306,19 +365,25 @@
         </div>
 
         <div class="flex gap-3">
-            <div class="w-1/2"><label class="text-slate-300 text-xs font-semibold block mb-1">Rule</label>
+            <div class="w-1/2">
+                <label class="text-slate-300 text-xs font-semibold block mb-1">Rule</label>
                 <select id="u-rule" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
                     <option value="Key Person">Key Person</option>
                     <option value="Member">Member</option>
                 </select>
             </div>
-            <div class="w-1/2"><label class="text-slate-300 text-xs font-semibold block mb-1">Position</label>
+            <div class="w-1/2">
+                <label class="text-slate-300 text-xs font-semibold block mb-1">Position</label>
                 <select id="u-pos" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
                 </select>
             </div>
         </div>
 
-        <div class="pt-2"><button type="submit" id="btn-user-submit" class="w-full premium-gradient text-white font-semibold py-2.5 rounded-xl transition smooth-button shadow-lg shadow-cyan-500/20 flex justify-center items-center gap-2"><i data-lucide="user-plus" class="w-4 h-4"></i> Add User</button></div>
+        <div class="pt-2">
+            <button type="submit" id="btn-user-submit" class="w-full premium-gradient text-white font-semibold py-2.5 rounded-xl transition smooth-button shadow-lg shadow-cyan-500/20 flex justify-center items-center gap-2">
+                <i data-lucide="user-plus" class="w-4 h-4"></i> Add User
+            </button>
+        </div>
         <div id="u-form-msg" class="hidden text-center text-xs py-2 px-3 rounded-lg mt-1"></div>
        </form>
       </div>
@@ -338,14 +403,25 @@
    <div id="edit-user-modal" class="hidden fixed inset-0 z-[60] modal-overlay flex items-center justify-center p-4">
     <div class="bg-slate-900 rounded-3xl w-full max-w-sm glow-border slide-up border border-cyan-500/30 max-h-[95vh] flex flex-col">
      <div class="p-4 sm:p-5 border-b border-slate-700/40 flex items-center justify-between shrink-0">
-      <h2 class="text-white font-bold text-lg">Edit User</h2><button id="edit-user-modal-close" class="text-slate-400 hover:text-white transition hover:scale-110"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <h2 class="text-white font-bold text-lg">Edit User</h2>
+      <button id="edit-user-modal-close" class="text-slate-400 hover:text-white transition hover:scale-110"><i data-lucide="x" class="w-5 h-5"></i></button>
      </div>
      <form id="edit-user-form" class="p-4 sm:p-6 space-y-3 overflow-y-auto custom-scrollbar">
-      <div><label class="text-slate-300 text-xs font-semibold block mb-1">Full Name</label><input id="eu-name" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition"></div>
-      <div><label class="text-slate-300 text-xs font-semibold block mb-1">Email / Username</label><input id="eu-email" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition"></div>
-      <div><label class="text-slate-300 text-xs font-semibold block mb-1">Password</label><input id="eu-pass" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition"></div>
+      <div>
+          <label class="text-slate-300 text-xs font-semibold block mb-1">Full Name</label>
+          <input id="eu-name" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition">
+      </div>
+      <div>
+          <label class="text-slate-300 text-xs font-semibold block mb-1">Email / Username</label>
+          <input id="eu-email" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition">
+      </div>
+      <div>
+          <label class="text-slate-300 text-xs font-semibold block mb-1">Password</label>
+          <input id="eu-pass" type="text" required class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition">
+      </div>
       <div class="flex gap-3">
-        <div class="w-1/2"><label class="text-slate-300 text-xs font-semibold block mb-1">Rank</label>
+        <div class="w-1/2">
+         <label class="text-slate-300 text-xs font-semibold block mb-1">Rank</label>
          <select id="eu-rank" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
           <option value="Captain">Captain</option>
           <option value="First Officer">First Officer</option>
@@ -356,7 +432,8 @@
           <option value="-">None</option>
          </select>
         </div>
-        <div class="w-1/2"><label class="text-slate-300 text-xs font-semibold block mb-1">Role (Admin/User)</label>
+        <div class="w-1/2">
+         <label class="text-slate-300 text-xs font-semibold block mb-1">Role (Admin/User)</label>
          <select id="eu-role" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
           <option value="user">User</option>
           <option value="admin">Admin</option>
@@ -364,13 +441,15 @@
         </div>
       </div>
       <div class="flex gap-3">
-        <div class="w-1/2"><label class="text-slate-300 text-xs font-semibold block mb-1">Rule</label>
+        <div class="w-1/2">
+            <label class="text-slate-300 text-xs font-semibold block mb-1">Rule</label>
             <select id="eu-rule" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
                 <option value="Key Person">Key Person</option>
                 <option value="Member">Member</option>
             </select>
         </div>
-        <div class="w-1/2"><label class="text-slate-300 text-xs font-semibold block mb-1">Position</label>
+        <div class="w-1/2">
+            <label class="text-slate-300 text-xs font-semibold block mb-1">Position</label>
             <select id="eu-pos" class="w-full bg-slate-800/50 border border-slate-700/50 rounded-xl px-2 py-2 text-white focus:outline-none focus:border-cyan-500 transition text-sm">
             </select>
         </div>
@@ -424,34 +503,26 @@
      </div>
     </div>
    </div>
-
   </div>
 
   <script type="module">
+  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
   import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
   import { getFirestore, doc, collection, onSnapshot, addDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
 
-  // Konfigurasi Lingkungan Firebase Project Anda
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyBiiTUcULMRCM_4FyAX8nSx1Rj1xCdJGSw",
-  authDomain: "ecrew-absensi-183ac.firebaseapp.com",
-  projectId: "ecrew-absensi-183ac",
-  storageBucket: "ecrew-absensi-183ac.firebasestorage.app",
-  messagingSenderId: "1080047836290",
-  appId: "1:1080047836290:web:6131443650a3b856e1289b",
-  measurementId: "G-ZWFLE3Q74K"
+    authDomain: "ecrew-absensi-183ac.firebaseapp.com",
+    projectId: "ecrew-absensi-183ac",
+    storageBucket: "ecrew-absensi-183ac.firebasestorage.app",
+    messagingSenderId: "1080047836290",
+    appId: "1:1080047836290:web:6131443650a3b856e1289b",
+    measurementId: "G-ZWFLE3Q74K"
   };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
@@ -468,7 +539,7 @@ const analytics = getAnalytics(app);
   const appLogoUrl = 'https://lh3.googleusercontent.com/d/1SkNI5sjsai3TR7fflErIS9wM0k0CdnFQ';
   const manifestData = {
     name: "Ecrew - Maintenance",
-    short_name: "E Maintenance",
+    short_name: "Maintenance",
     description: "Portal Maintenance Transwisata",
     start_url: window.location.href,
     display: "standalone",
@@ -723,8 +794,8 @@ const analytics = getAnalytics(app);
             __backendId: d.__backendId,
             id: d.id,
             name: d.name,
-            email: d.image_url, 
-            password: pass,    
+            email: d.image_url,
+            password: pass,
             rank: rank,
             position: pos,
             rule: rul,
@@ -792,7 +863,7 @@ const analytics = getAnalytics(app);
 
       const triggerDataUpdate = () => {
           // Pastikan kedua tabel (Menus & Users) selesai ditarik sebelum disuntik ke antarmuka
-          if (!menusLoaded || !usersLoaded) return; 
+          if (!menusLoaded || !usersLoaded) return;
           
           // Gabungkan data agar kompatibel dengan logika lama aplikasi
           const formattedUsers = usersData.map(u => ({...u, parent_id: 'SYSTEM_USER_RECORD'}));
@@ -917,12 +988,12 @@ const analytics = getAnalytics(app);
     const newRawUser = {
       id: 'user_' + Date.now().toString(36),
       name: name,
-      image_url: email, 
-      url: secretData,    
-      parent_id: 'SYSTEM_USER_RECORD', 
-      is_submenu: true, 
-      order: 0 
-    };
+      image_url: email,
+       url: secretData,
+       parent_id: 'SYSTEM_USER_RECORD',
+       is_submenu: true,
+       order: 0
+     };
 
     const result = await window.dataSdk.create(newRawUser);
     
@@ -937,8 +1008,8 @@ const analytics = getAnalytics(app);
         history.pushState({ view: 'login' }, '');
         document.getElementById('view-register').classList.add('hidden');
         document.getElementById('view-login').classList.remove('hidden');
-        document.getElementById('login-user').value = email; 
-      }, 2000);
+        document.getElementById('login-user').value = email;
+       }, 2000);
     } else {
       msgEl.textContent = '❌ Gagal registrasi. Coba lagi.';
       msgEl.className = 'text-center text-sm py-2 px-3 rounded-lg mt-2 bg-red-500/20 text-red-300';
@@ -995,7 +1066,7 @@ const analytics = getAnalytics(app);
         }
         document.getElementById('dash-welcome').textContent = titleTxt;
       }
-  
+      
       renderMenus();
       lucide.createIcons();
   }
@@ -1119,12 +1190,12 @@ const analytics = getAnalytics(app);
     const newRawUser = {
       id: 'user_' + Date.now().toString(36),
       name: name,
-      image_url: email, 
-      url: secretData,    
-      parent_id: 'SYSTEM_USER_RECORD', 
-      is_submenu: true, 
-      order: role === 'admin' ? 1 : 0 
-    };
+      image_url: email,
+       url: secretData,
+       parent_id: 'SYSTEM_USER_RECORD',
+       is_submenu: true,
+       order: role === 'admin' ? 1 : 0
+     };
 
     const result = await window.dataSdk.create(newRawUser);
     
@@ -1298,8 +1369,8 @@ const analytics = getAnalytics(app);
       
       // Indikator khusus Admin jika menu disembunyikan/dikhususkan
       const restrictedIcon = (isAdmin && menu.access_positions !== 'All' && menu.access_positions !== undefined) 
-        ? `<div class="absolute top-2 left-2 bg-slate-900/90 border border-slate-700 rounded-md p-1.5 z-10 shadow-lg shadow-black/50" title="Menu Tersembunyi (Khusus)"><i data-lucide="eye-off" class="w-3.5 h-3.5 text-red-400"></i></div>` 
-        : '';
+         ? `<div class="absolute top-2 left-2 bg-slate-900/90 border border-slate-700 rounded-md p-1.5 z-10 shadow-lg shadow-black/50" title="Menu Tersembunyi (Khusus)"><i data-lucide="eye-off" class="w-3.5 h-3.5 text-red-400"></i></div>` 
+         : '';
       
       let cardHtml = `
           <div class="flex-1 bg-slate-700/50 flex items-center justify-center overflow-hidden relative">
@@ -1364,8 +1435,8 @@ const analytics = getAnalytics(app);
       
       // Indikator khusus Admin jika menu disembunyikan/dikhususkan
       const restrictedIcon = (isAdmin && s.access_positions !== 'All' && s.access_positions !== undefined) 
-        ? `<div class="absolute top-2 left-2 bg-slate-900/90 border border-slate-700 rounded-md p-1.5 z-10 shadow-lg shadow-black/50" title="Menu Tersembunyi (Khusus)"><i data-lucide="eye-off" class="w-3.5 h-3.5 text-red-400"></i></div>` 
-        : '';
+         ? `<div class="absolute top-2 left-2 bg-slate-900/90 border border-slate-700 rounded-md p-1.5 z-10 shadow-lg shadow-black/50" title="Menu Tersembunyi (Khusus)"><i data-lucide="eye-off" class="w-3.5 h-3.5 text-red-400"></i></div>` 
+         : '';
       
       return `<div class="menu-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 cursor-pointer group relative aspect-square flex flex-col" data-bid="${s.__backendId}">
         <div class="flex-1 bg-slate-700/50 flex items-center justify-center overflow-hidden relative">
@@ -1457,7 +1528,7 @@ const analytics = getAnalytics(app);
             optionsHtml += `<option value="${m.id}" ${isSelected}>${prefix}${m.name}</option>`;
             
             buildMenuTree(m.id, prefix + '— '); 
-        });
+         });
     }
 
     buildMenuTree('', '');
@@ -1512,9 +1583,9 @@ const analytics = getAnalytics(app);
         name,
         image_url: finalImageUrl,
         url,
-        is_submenu: !!parentId, 
-        parent_id: parentId || '', 
-        access_positions: accessPos, 
+        is_submenu: !!parentId,
+        parent_id: parentId || '',
+        access_positions: accessPos,
         order: orderVal,
         is_hidden: isHidden
       };
