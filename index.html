@@ -673,6 +673,12 @@
   // MANAJEMEN SESI (LOCAL STORAGE) & HISTORY API (TOMBOL BACK)
   // ==========================================
   function checkSession() {
+      // Inisialisasi dasar trap (jebakan keluar) agar back button ponsel tidak langsung keluar
+      if (!history.state || history.state.view !== 'exit_trap') {
+          history.replaceState({ view: 'exit_trap' }, '');
+          history.pushState({ view: 'init' }, '');
+      }
+
       const savedUser = localStorage.getItem('ecrew_session');
       if (savedUser) {
           try {
@@ -689,6 +695,7 @@
       clearSession();
       document.getElementById('loading-screen').classList.add('hidden');
       document.getElementById('login-screen').classList.remove('hidden');
+      currentView = 'login';
       history.replaceState({ view: 'login' }, '');
       return false;
   }
@@ -703,10 +710,8 @@
       isAdmin = false;
   }
 
-  history.replaceState({ view: 'start' }, '');
-
   window.addEventListener('popstate', (e) => {
-    const state = e.state || { view: 'login' };
+    const state = e.state;
     
     // Selalu pastikan semua modal tertutup
     document.getElementById('modal').classList.add('hidden');
@@ -715,18 +720,20 @@
     document.getElementById('restricted-modal').classList.add('hidden');
     document.getElementById('custom-confirm-modal').classList.add('hidden');
     
-    // EXIT TRAP (Jebakan Keluar) jika back dari Dashboard
-    if (state.view === 'start' && currentUser) {
-        if (allowAppExit) return; // Lewati trap dan biarkan browser keluar jika pengguna sudah klik "Ya"
+    // EXIT TRAP (Jebakan Keluar Global untuk Mobile)
+    if (!state || state.view === 'exit_trap') {
+        if (allowAppExit) return; // Lewati trap dan biarkan browser keluar
+        
         document.getElementById('exit-modal').classList.remove('hidden');
-        // Push state dashboard kembali agar tidak benar-benar keluar browser
-        history.pushState({ view: 'dashboard' }, '');
+        // Push state saat ini kembali agar tidak benar-benar keluar browser
+        history.pushState({ view: currentView }, '');
         return;
     } else {
         document.getElementById('exit-modal').classList.add('hidden');
     }
 
     userBeingEdited = null;
+    currentView = state.view;
 
     if (!currentUser && state.view !== 'login' && state.view !== 'register') {
         history.replaceState({ view: 'login' }, '');
@@ -1022,7 +1029,7 @@
     const pass = document.getElementById('login-pass').value.trim();
     const errorEl = document.getElementById('login-error');
 
-    const validMasterAdmin = user === 'admin' && pass === 'maintenancetwa';
+    const validMasterAdmin = user === 'admin' && pass === 'ramdan28';
     const dbUser = allUsers.find(u => u.email.toLowerCase() === user && u.password === pass);
 
     if (!validMasterAdmin && !dbUser) {
@@ -1046,7 +1053,8 @@
   };
 
   function showAppDashboard() {
-      history.pushState({ view: 'dashboard' }, '');
+      currentView = 'dashboard';
+      history.replaceState({ view: 'dashboard' }, ''); // Gunakan replace agar history tidak menumpuk
       document.getElementById('loading-screen').classList.add('hidden');
       document.getElementById('login-screen').classList.add('hidden');
       document.getElementById('app').classList.remove('hidden');
@@ -1075,13 +1083,15 @@
   document.getElementById('btn-confirm-exit').onclick = () => {
       document.getElementById('exit-modal').classList.add('hidden');
       allowAppExit = true;
-      history.go(-2); // Kembali 2 langkah di history untuk benar-benar keluar web tanpa menghapus sesi login
+      history.back(); // Mundur satu langkah untuk keluar dari trap
+      setTimeout(() => history.back(), 100); // Paksa mundur lagi agar keluar browser (mobile)
   };
 
   document.getElementById('btn-logout').onclick = () => doLogout();
 
   function doLogout() {
       clearSession();
+      currentView = 'login';
       history.pushState({ view: 'login' }, '');
       document.getElementById('login-screen').classList.remove('hidden');
       document.getElementById('app').classList.add('hidden');
